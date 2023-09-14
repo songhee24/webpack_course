@@ -1,10 +1,6 @@
-
-// const webpack = require('webpack')
-
 import path from "path";
 import webpack from "webpack";
 import HtmlWebpackPlugin from "html-webpack-plugin";
-
 export default (env: any) => {
     const config: webpack.Configuration = {
         mode: env.mode ?? 'development',
@@ -28,7 +24,7 @@ export default (env: any) => {
             ],
         },
         resolve: {
-            extensions: ['.tsx','.ts','.js']
+            extensions: ['.tsx', '.ts', '.js']
         }
     };
     return config
