@@ -1,4 +1,4 @@
 import {calc} from "./test";
 
-console.log('HELLO WORLD')
-console.log(calc(1, 44))
+console.log('HELLO WORLDasdsdad')
+console.log(calc(1, 414))
