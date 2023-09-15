@@ -29,6 +29,8 @@ export default (env: EnvVariables) => {
         module: {
             rules: [
                 {
+                    // ts-laoder умееть работать с JSX из под коробки
+                    // Если бы мы не использовали typescript: нужен был бы babel-loader
                     test: /\.tsx?$/,
                     use: 'ts-loader',
                     exclude: /node_modules/,
