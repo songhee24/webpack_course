@@ -1,7 +1,7 @@
-import React from "react";
+import {useState} from "react";
 
 const App = () => {
-    const [counter, setCounter] = React.useState(0)
+    const [counter, setCounter] = useState(0)
 
     const increment = () => setCounter(prevState => prevState+1)
 
