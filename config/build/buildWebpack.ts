@@ -1,10 +1,8 @@
 import webpack from "webpack";
 import path from "path";
-import HtmlWebpackPlugin from "html-webpack-plugin";
-import MiniCssExtractPlugin from "mini-css-extract-plugin";
-
-import type { Configuration as DevServerConfiguration } from "webpack-dev-server";
 import {buildLoaders} from "./buildLoaders";
+import {buildPlugins} from "./buildPlugins";
+import {buildResolvers} from "./buildResolvers";
 
 
 export const buildWebpack = (options): webpack.Configuration => {
@@ -16,13 +14,11 @@ export const buildWebpack = (options): webpack.Configuration => {
             filename: '[name].[contenthash].js',
             clean: true
         },
-        plugins:
+        plugins: buildPlugins(),
         module: {
             rules: buildLoaders()
         },
-        resolve: {
-            extensions: ['.tsx', '.ts', '.js']
-        },
+        resolve: buildResolvers(),
         devtool: isDev ? 'inline-source-map' : false,
         devServer: isDev ? {
             port: env.port ?? 8000,
