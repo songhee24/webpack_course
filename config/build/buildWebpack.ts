@@ -16,14 +16,7 @@ export const buildWebpack = (options): webpack.Configuration => {
             filename: '[name].[contenthash].js',
             clean: true
         },
-        plugins: [
-            new HtmlWebpackPlugin({template: path.resolve(__dirname, 'public', 'index.html')}),
-            !isDev && new MiniCssExtractPlugin({
-                filename: 'css/[name].[contenthash:8].css',
-                chunkFilename: 'css/[name].[contenthash:8].css'
-            })
-            // new webpack.ProgressPlugin()
-        ],
+        plugins:
         module: {
             rules: buildLoaders()
         },

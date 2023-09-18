@@ -22,5 +22,5 @@ export const buildLoaders = (): ModuleOptions['rules'] => {
             use: 'ts-loader',
             exclude: /node_modules/,
         },
-    ],
+    ]
 }
