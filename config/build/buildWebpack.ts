@@ -25,7 +25,7 @@ export const buildWebpack = (options): webpack.Configuration => {
             // new webpack.ProgressPlugin()
         ],
         module: {
-rules: buildLoaders()
+            rules: buildLoaders()
         },
         resolve: {
             extensions: ['.tsx', '.ts', '.js']

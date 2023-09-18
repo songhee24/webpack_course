@@ -1,7 +1,7 @@
 import {ModuleOptions} from "webpack"
 import MiniCssExtractPlugin from "mini-css-extract-plugin";
 
-export const buildLoaders = ():ModuleOptions['rules']  => {
+export const buildLoaders = (): ModuleOptions['rules'] => {
     return [
         {
             test: /\.s[ac]ss$/i,
