@@ -25,7 +25,7 @@ export default (env: EnvVariables) => {
         },
         plugins: [
             new HtmlWebpackPlugin({template: path.resolve(__dirname, 'public', 'index.html')}),
-            new MiniCssExtractPlugin({
+            !isDev && new MiniCssExtractPlugin({
                 filename: 'css/[name].[contenthash:8].css',
                 chunkFilename: 'css/[name].[contenthash:8].css'
             })
