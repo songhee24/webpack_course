@@ -4,6 +4,7 @@ import HtmlWebpackPlugin from "html-webpack-plugin";
 import MiniCssExtractPlugin from "mini-css-extract-plugin";
 
 import type { Configuration as DevServerConfiguration } from "webpack-dev-server";
+import {buildLoaders} from "./buildLoaders";
 
 
 export const buildWebpack = (options): webpack.Configuration => {
@@ -24,27 +25,7 @@ export const buildWebpack = (options): webpack.Configuration => {
             // new webpack.ProgressPlugin()
         ],
         module: {
-            rules: [
-                {
-                    test: /\.s[ac]ss$/i,
-                    use: [
-                        // Creates `style` nodes from JS strings
-                        // "style-loader",
-                        isDev ? 'style-loader' : MiniCssExtractPlugin.loader,
-                        // Translates CSS into CommonJS
-                        "css-loader",
-                        // Compiles Sass to CSS
-                        "sass-loader",
-                    ],
-                },
-                {
-                    // ts-laoder умееть работать с JSX из под коробки
-                    // Если бы мы не использовали typescript: нужен был бы babel-loader
-                    test: /\.tsx?$/,
-                    use: 'ts-loader',
-                    exclude: /node_modules/,
-                },
-            ],
+rules: buildLoaders()
         },
         resolve: {
             extensions: ['.tsx', '.ts', '.js']
