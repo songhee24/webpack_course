@@ -3,25 +3,28 @@ import path from "path";
 import {buildLoaders} from "./buildLoaders";
 import {buildPlugins} from "./buildPlugins";
 import {buildResolvers} from "./buildResolvers";
+import {BuildOptions} from "./types/types";
 
 
-export const buildWebpack = (options): webpack.Configuration => {
+export const buildWebpack = (options: BuildOptions): webpack.Configuration => {
+    const isDev = options.mode === 'development'
+
     return{
-        mode: env.mode ?? 'development',
+        mode: options.mode ?? 'development',
         entry: path.resolve(__dirname, 'src', 'index.tsx'),
         output: {
             path: path.resolve(__dirname, 'dist'),
             filename: '[name].[contenthash].js',
             clean: true
         },
-        plugins: buildPlugins(),
+        plugins: buildPlugins(options),
         module: {
-            rules: buildLoaders()
+            rules: buildLoaders(options)
         },
         resolve: buildResolvers(),
         devtool: isDev ? 'inline-source-map' : false,
         devServer: isDev ? {
-            port: env.port ?? 8000,
+            port: options.port ?? 8000,
             open: true,
         } : undefined
     };
