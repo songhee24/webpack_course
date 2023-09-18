@@ -1,6 +1,5 @@
 import {useState} from "react";
 import './App.scss'
-import './test.scss'
 const App = () => {
     const [counter, setCounter] = useState(0)
 
