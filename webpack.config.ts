@@ -25,7 +25,10 @@ export default (env: EnvVariables) => {
         },
         plugins: [
             new HtmlWebpackPlugin({template: path.resolve(__dirname, 'public', 'index.html')}),
-            new MiniCssExtractPlugin()
+            new MiniCssExtractPlugin({
+                filename: 'css/[name].[contenthash:8].css',
+                chunkFilename: 'css/[name].[contenthash:8].css'
+            })
             // new webpack.ProgressPlugin()
         ],
         module: {
@@ -35,7 +38,7 @@ export default (env: EnvVariables) => {
                     use: [
                         // Creates `style` nodes from JS strings
                         // "style-loader",
-                        MiniCssExtractPlugin.loader,
+                        isDev ? 'style-loader' : MiniCssExtractPlugin.loader,
                         // Translates CSS into CommonJS
                         "css-loader",
                         // Compiles Sass to CSS
