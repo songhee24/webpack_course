@@ -1,3 +1,3 @@
 import {lazy} from "react";
 
-export const AboutLazy = lazy(() => import('./Shop'))
+export const ShopLazy = lazy(() => import('./Shop'))
