@@ -1,5 +1,4 @@
 import webpack from "webpack";
-import path from "path";
 import {buildLoaders} from "./buildLoaders";
 import {buildPlugins} from "./buildPlugins";
 import {buildResolvers} from "./buildResolvers";
@@ -7,13 +6,14 @@ import {BuildOptions} from "./types/types";
 
 
 export const buildWebpack = (options: BuildOptions): webpack.Configuration => {
+    const {paths, port} = options
     const isDev = options.mode === 'development'
 
     return{
         mode: options.mode ?? 'development',
-        entry: path.resolve(__dirname, 'src', 'index.tsx'),
+        entry: paths.entry,
         output: {
-            path: path.resolve(__dirname, 'dist'),
+            path: paths.output,
             filename: '[name].[contenthash].js',
             clean: true
         },
@@ -21,10 +21,10 @@ export const buildWebpack = (options: BuildOptions): webpack.Configuration => {
         module: {
             rules: buildLoaders(options)
         },
-        resolve: buildResolvers(),
+        resolve: buildResolvers(options),
         devtool: isDev ? 'inline-source-map' : false,
         devServer: isDev ? {
-            port: options.port ?? 8000,
+            port: port ?? 8000,
             open: true,
         } : undefined
     };
