@@ -23,7 +23,7 @@ const App = () => {
             </div>
             <div>
                 {/*<img width={100} height={100} src={svg} alt=''/>*/}
-                <Svg width={50} height={50} fill={'red'} />
+                <Svg width={50} height={50} style={{color: 'red'}} />
             </div>
             <Link to={'/about'}>about</Link>
             <br/>
