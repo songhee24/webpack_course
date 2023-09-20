@@ -2,23 +2,30 @@ import {useState} from "react";
 import classes from './App.module.scss'
 import {Link, Outlet} from "react-router-dom";
 // import About from "@/pages/about/About";
-import Png from '@/assets/png_.png'
+import png from '@/assets/png_.png'
+import jpg from '@/assets/jpg_.jpg'
+
 const App = () => {
     const [counter, setCounter] = useState(0)
 
-    const increment = () => setCounter(prevState => prevState+1)
+    const increment = () => setCounter(prevState => prevState + 1)
 
     return (
         <div>
             <div>
-                {Png}
+                <img width={100} height={100} src={png} alt=''/>
+                {png}
+            </div>
+            <div>
+                <img width={100} height={100} src={jpg} alt=''/>
+                {jpg}
             </div>
             <Link to={'/about'}>about</Link>
-            <br />
+            <br/>
             <Link to={'/shop'}>shop</Link>
             <h1>{counter}</h1>
             <button className={classes.button} onClick={increment}>inc</button>
-            <Outlet />
+            <Outlet/>
             {/*<About />*/}
         </div>
     )
