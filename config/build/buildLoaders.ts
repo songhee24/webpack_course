@@ -5,6 +5,10 @@ import {BuildOptions} from "./types/types";
 export const buildLoaders = (options: BuildOptions): ModuleOptions['rules'] => {
     const isDev = options.mode === 'development'
 
+    const assetLoader = {
+        test: /\.(png|svg|jpg|jpeg|gif)$/i,
+        type: 'asset/resource',
+    }
 
     const cssLoaderWithModules = {
         loader: 'css-loader',
@@ -38,6 +42,7 @@ export const buildLoaders = (options: BuildOptions): ModuleOptions['rules'] => {
     };
 
     return [
+        assetLoader,
         scssLoader,
         tsLoader,
     ]

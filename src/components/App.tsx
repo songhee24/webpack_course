@@ -2,6 +2,7 @@ import {useState} from "react";
 import classes from './App.module.scss'
 import {Link, Outlet} from "react-router-dom";
 // import About from "@/pages/about/About";
+import Png from '@/assets/png_.png'
 const App = () => {
     const [counter, setCounter] = useState(0)
 
@@ -9,6 +10,9 @@ const App = () => {
 
     return (
         <div>
+            <div>
+                {Png}
+            </div>
             <Link to={'/about'}>about</Link>
             <br />
             <Link to={'/shop'}>shop</Link>
