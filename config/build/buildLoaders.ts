@@ -12,7 +12,8 @@ export const buildLoaders = (options: BuildOptions): ModuleOptions['rules'] => {
 
     const svgLoader = {
         test: /\.svg$/i,
-        use: ['@svgr/webpack'],
+        issuer: /\.[jt]sx?$/,
+        use: [{ loader: '@svgr/webpack', options: { icon: true } }],
     }
 
     const cssLoaderWithModules = {
