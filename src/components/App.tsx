@@ -4,7 +4,7 @@ import {Link, Outlet} from "react-router-dom";
 // import About from "@/pages/about/About";
 import png from '@/assets/png_.png'
 import jpg from '@/assets/jpg_.jpg'
-import svg from '@/assets/svg_.svg'
+import Svg from '@/assets/svg_.svg'
 
 const App = () => {
     const [counter, setCounter] = useState(0)
@@ -22,8 +22,8 @@ const App = () => {
                 {jpg}
             </div>
             <div>
-                <img width={100} height={100} src={svg} alt=''/>
-                {svg}
+                {/*<img width={100} height={100} src={svg} alt=''/>*/}
+                <Svg width={50} height={50} fill={'red'} />
             </div>
             <Link to={'/about'}>about</Link>
             <br/>

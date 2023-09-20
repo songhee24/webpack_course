@@ -6,8 +6,13 @@ export const buildLoaders = (options: BuildOptions): ModuleOptions['rules'] => {
     const isDev = options.mode === 'development'
 
     const assetLoader = {
-        test: /\.(png|svg|jpg|jpeg|gif)$/i,
+        test: /\.(png|jpg|jpeg|gif)$/i,
         type: 'asset/resource',
+    }
+
+    const svgLoader = {
+        test: /\.svg$/i,
+        use: ['@svgr/webpack'],
     }
 
     const cssLoaderWithModules = {
@@ -45,5 +50,6 @@ export const buildLoaders = (options: BuildOptions): ModuleOptions['rules'] => {
         assetLoader,
         scssLoader,
         tsLoader,
+        svgLoader,
     ]
 }
