@@ -7,6 +7,7 @@ type Mode = 'development' | 'production'
 interface EnvVariables {
     mode: Mode,
     port: number
+    analyzer: boolean
 }
 
 export default (env: EnvVariables) => {
@@ -19,6 +20,7 @@ export default (env: EnvVariables) => {
     return buildWebpack({
         port: env.port ?? 3000,
         mode: env.mode ?? 'development',
-        paths: paths
+        paths: paths,
+        analyzer: env.analyzer,
     });
 }
