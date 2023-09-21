@@ -11,6 +11,10 @@ const App = () => {
 
     const increment = () => setCounter(prevState => prevState + 1)
 
+    if(__PLATFORM__ === 'mobile') {
+        return <h1>MOBILE CODE HERE {__PLATFORM__}</h1>
+    }
+
     return (
         <div>
             <h1>PLATFORM {__PLATFORM__}</h1>
