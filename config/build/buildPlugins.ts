@@ -14,7 +14,6 @@ export const buildPlugins = ({mode, paths, analyzer, platform}: BuildOptions): C
         new DefinePlugin({
             __PLATFORM__: JSON.stringify(platform)
         }),
-        new ForkTsCheckerWebpackPlugin()
     ]
 
     if (isProd) {
@@ -25,6 +24,10 @@ export const buildPlugins = ({mode, paths, analyzer, platform}: BuildOptions): C
     }
 
     if (isDev) {
+        plugins.push(
+            new ForkTsCheckerWebpackPlugin()
+            
+        )
     }
 
     if (analyzer) {
