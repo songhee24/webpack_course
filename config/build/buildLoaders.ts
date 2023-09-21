@@ -75,10 +75,23 @@ export const buildLoaders = (options: BuildOptions): ModuleOptions['rules'] => {
         ]
     }
 
+    const babelLoader = {
+        // test: /\.m?js$/,
+        test: /\.tsx?$/,
+        exclude: /node_modules/,
+        use: {
+            loader: "babel-loader",
+            options: {
+                presets: ['@babel/preset-env']
+            }
+        }
+    }
+
     return [
         assetLoader,
         scssLoader,
-        tsLoader,
+        // tsLoader,
+        babelLoader,
         svgLoader,
     ]
 }
