@@ -11,7 +11,7 @@ export const buildPlugins = ({mode, paths, analyzer, platform}: BuildOptions): C
     const plugins: Configuration['plugins'] = [
         new HtmlWebpackPlugin({template: paths.html}),
         new DefinePlugin({
-            __PLATFORM__: platform
+            __PLATFORM__: JSON.stringify(platform)
         })
     ]
 
