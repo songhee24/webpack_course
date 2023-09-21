@@ -26,7 +26,6 @@ export const buildPlugins = ({mode, paths, analyzer, platform}: BuildOptions): C
     if (isDev) {
         plugins.push(
             new ForkTsCheckerWebpackPlugin()
-            
         )
     }
 
