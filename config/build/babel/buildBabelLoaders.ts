@@ -1,4 +1,5 @@
 import {BuildOptions} from "../types/types";
+import {removeDataTestIdBabelPlugin} from "./removeDataTestIdBabelPlugin";
 
 export function buildBabelLoaders({mode}: BuildOptions) {
     const isDev = mode === 'development'
@@ -17,6 +18,14 @@ export function buildBabelLoaders({mode}: BuildOptions) {
                         '@babel/preset-react', {
                         runtime: isDev ? 'automatic' : 'classic',
                     }
+                    ]
+                ],
+                plugins: [
+                    [
+                     removeDataTestIdBabelPlugin,
+                        {
+                            props: ['data-testid']
+                        }
                     ]
                 ]
             }
