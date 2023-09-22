@@ -3,6 +3,15 @@ import {removeDataTestIdBabelPlugin} from "./removeDataTestIdBabelPlugin";
 
 export function buildBabelLoaders({mode}: BuildOptions) {
     const isDev = mode === 'development'
+    const isProd = mode === 'production'
+
+    const plugins = []
+    if(isProd) {
+        plugins.push(  removeDataTestIdBabelPlugin,
+            {
+                props: ['data-testid']
+            })
+    }
 
     return {
         // test: /\.m?js$/,
@@ -20,14 +29,7 @@ export function buildBabelLoaders({mode}: BuildOptions) {
                     }
                     ]
                 ],
-                plugins: [
-                    [
-                     removeDataTestIdBabelPlugin,
-                        {
-                            props: ['data-testid']
-                        }
-                    ]
-                ]
+                plugins: plugins.length ? plugins : undefined
             }
         }
     }
