@@ -82,7 +82,7 @@ export const buildLoaders = (options: BuildOptions): ModuleOptions['rules'] => {
         use: {
             loader: "babel-loader",
             options: {
-                presets: ['@babel/preset-env']
+                presets: ['@babel/preset-env', '@babel/preset-typescript', '@babel/preset-react']
             }
         }
     }
